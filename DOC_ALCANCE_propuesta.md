@@ -61,11 +61,11 @@ Esta sección establece la identidad funcional del activo de datos: su posición
 | N° | Campo Técnico | Nombre de Negocio | Definición de Negocio | Tipo Campo | Es PK | Llave de Negocio |
 |---|---|---|---|---|---|---|
 | 1 | `idpersonahomol` | ID DE PERSONA HOMOLOGADO | Identificador único autogenerado homologado. Hash de la concatenación del tipo de documento con el número de documento de la persona. Garantiza unicidad entre fuentes heterogéneas. | Fuente | Sí | Sí |
-| 2 | `idpersona` | ID DE PERSONA | Identificador de la persona que concatena el tipo de documento con el número de documento tal como figura en los sistemas transaccionales de Pacífico. | Fuente | No | Sí |
+| 2 | `idpersona` | ID DE PERSONA | Identificador de la persona que concatena el tipo de documento con el número de documento tal como figura en los sistemas transaccionales de Empresa. | Fuente | No | Sí |
 | 3 | `tipodochomol` | TIPO DE DOCUMENTO HOMOLOGADO | Campo calculado. Indica el tipo de documento homologado del cliente, incluyendo homologación de tipos de documento de data externa. | Fuente | No | No |
-| 4 | `numdochomol` | NÚMERO DE DOCUMENTO HOMOLOGADO | Número de documento estandarizado con el que el cliente figura en los sistemas de Pacífico, completado con ceros a la izquierda hasta una longitud de catorce (14) caracteres. | Fuente | No | Sí |
+| 4 | `numdochomol` | NÚMERO DE DOCUMENTO HOMOLOGADO | Número de documento estandarizado con el que el cliente figura en los sistemas de Empresa, completado con ceros a la izquierda hasta una longitud de catorce (14) caracteres. | Fuente | No | Sí |
 | 5 | `tipodoc` | TIPO DE DOCUMENTO | Campo fuente. Indica el tipo de documento registrado en los sistemas transaccionales: DNI, RUC, Pasaporte, entre otros. | Fuente | No | No |
-| 6 | `numdoc` | NÚMERO DE DOCUMENTO | Campo fuente. Número de documento con el que el cliente figura en los sistemas transaccionales de Pacífico, sin normalización. | Fuente | No | Sí |
+| 6 | `numdoc` | NÚMERO DE DOCUMENTO | Campo fuente. Número de documento con el que el cliente figura en los sistemas transaccionales de Empresa, sin normalización. | Fuente | No | Sí |
 | 7 | `codrol` | CÓDIGO DE ROL DEL CLIENTE | Código identificador del rol del cliente en la póliza. Valores: `A` = Asegurado, `C` = Contratante. | Fuente | No | No |
 | 8 | `desrol` | DESCRIPCIÓN DEL ROL DEL CLIENTE | Descripción del rol del cliente en la póliza. Valores: `Asegurado`, `Contratante`. | Fuente | No | No |
 | 9 | `tipopersona` | TIPO DE PERSONA | Tipo de persona registrada según clasificación interna. Valores: `Natural`, `Jurídica`. | Fuente | No | No |
@@ -74,13 +74,13 @@ Esta sección establece la identidad funcional del activo de datos: su posición
 | 12 | `numpoliza` | NÚMERO DE PÓLIZA | Número identificador único del contrato de seguro. Permite rastrear todas las renovaciones asociadas a una misma póliza. | Fuente | No | Sí |
 | 13 | `codcanal` | CÓDIGO DEL CANAL | Código del canal de distribución utilizado para la venta. Ejemplos: 001, 002, 003, 013, 029. | Fuente | No | No |
 | 14 | `descanal` | DESCRIPCIÓN DEL CANAL | Descripción del canal de distribución. Ejemplos: `001: Broker Corporativo`, `002: Broker Consolidado`. | Fuente | No | No |
-| 15 | `codlineanegocio` | CÓDIGO DE LÍNEA DE NEGOCIO | Identificador de la línea de negocio a la que pertenece el producto dentro del portafolio de Pacífico. | Fuente | No | No |
+| 15 | `codlineanegocio` | CÓDIGO DE LÍNEA DE NEGOCIO | Identificador de la línea de negocio a la que pertenece el producto dentro del portafolio de Empresa. | Fuente | No | No |
 | 16 | `deslineanegocio` | DESCRIPCIÓN DE LÍNEA DE NEGOCIO | Descripción de la línea de negocio a la que pertenece el código de producto. | Fuente | No | No |
 | 17 | `desgrupocomercial` | DESCRIPCIÓN DEL GRUPO COMERCIAL | Descripción del grupo comercial al que pertenece la venta del seguro. Ejemplos: `TLMK`, `Venta Directa`, `Corporativo`, `BCP`. | Fuente | No | No |
 | 18 | `codsistemaorigen` | CÓDIGO DEL SISTEMA ORIGEN | Código del sistema fuente desde el que se originó el registro. Ejemplos: `GW` (Guidewire), `AX` (Axon). | Fuente | No | No |
 | 19 | `periodo` | PERÍODO DE INFORMACIÓN | Período al que corresponde la información del registro según negocio. Formato: `YYYYMM`. | Control | No | No |
 | 20 | `periododia` | PERÍODO DÍA | Período diario de carga en formato `YYYYMMDD`. Usado para particionamiento eficiente de la tabla. | Control | No | No |
-| 21 | `feccargainfo` | FECHA DE CARGA DE INFORMACIÓN | Fecha en que se ejecutó la carga técnica del dato en el Data Lake de Pacífico. | Control | No | No |
+| 21 | `feccargainfo` | FECHA DE CARGA DE INFORMACIÓN | Fecha en que se ejecutó la carga técnica del dato en el Data Lake de Empresa. | Control | No | No |
 | 22 | `codapp` | CÓDIGO DE APLICACIÓN | Código del sistema de origen del dato, equivalente funcional a `codsistemaorigen` en contexto de carga. Ejemplos: `GW`, `AX`. | Control | No | No |
 | 23 | `flgobservado` | INDICADOR DE OBSERVACIÓN | Bandera lógica (`0`/`1`) que indica si el registro presentó observaciones durante la validación de reglas de negocio. | Control | No | No |
 | 24 | `desmensajeobs` | MENSAJE DE OBSERVACIÓN | Descripción del motivo de observación generado automáticamente por las reglas de validación al detectar inconsistencias en el registro. | Control | No | No |
@@ -123,14 +123,14 @@ Esta sección documenta la estructura física y lógica del activo de datos dent
 
 | N° | Campo DDV | Tipología | Entidad Física Relacionada | Llave Técnica | Descartado | Comentarios del Modelo |
 |---|---|---|---|---|---|---|
-| 1 | `idpersonahomol` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | Sí | No | PK de la tabla. Hash SHA-256 de tipo+número de documento. Garantiza unicidad cross-sistema. |
-| 2 | `idpersona` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | No | No | Concatenación tipo+número de documento sin normalización. Complementa idpersonahomol. |
+| 1 | `idpersonahomol` | Campo Fuente | `Tablapol` | Sí | No | PK de la tabla. Hash SHA-256 de tipo+número de documento. Garantiza unicidad cross-sistema. |
+| 2 | `idpersona` | Campo Fuente | `Tablapol` | No | No | Concatenación tipo+número de documento sin normalización. Complementa idpersonahomol. |
 | 3 | `tipodochomol` | Campo Calculado | `lkp_equivalencia_core` | No | No | Derivado de tabla de equivalencia de documentos. Homologa tipos de documento de fuentes externas. |
-| 4 | `numdochomol` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | No | No | Normalizado con ceros a la izquierda hasta 14 caracteres. Campo DAC de alta criticidad. |
-| 5 | `tipodoc` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | No | No | Valor original sin homologación. Conservado para trazabilidad con sistema fuente. |
-| 6 | `numdoc` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | No | No | Número de documento original sin padding. Usado para validación cruzada con numdochomol. |
-| 7 | `codrol` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | No | No | Códigos válidos: `A` (Asegurado), `C` (Contratante). Cardinalidad controlada. |
-| 8 | `desrol` | Campo Fuente | `hd_dac_poliza_cert_per_rol` | No | No | Derivado de codrol. No tiene regla de calidad independiente. |
+| 4 | `numdochomol` | Campo Fuente | `Tablapol` | No | No | Normalizado con ceros a la izquierda hasta 14 caracteres. Campo DAC de alta criticidad. |
+| 5 | `tipodoc` | Campo Fuente | `Tablapol` | No | No | Valor original sin homologación. Conservado para trazabilidad con sistema fuente. |
+| 6 | `numdoc` | Campo Fuente | `Tablapol` | No | No | Número de documento original sin padding. Usado para validación cruzada con numdochomol. |
+| 7 | `codrol` | Campo Fuente | `Tablapol` | No | No | Códigos válidos: `A` (Asegurado), `C` (Contratante). Cardinalidad controlada. |
+| 8 | `desrol` | Campo Fuente | `Tablapol` | No | No | Derivado de codrol. No tiene regla de calidad independiente. |
 | 9 | `tipopersona` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Clasificación: `Natural` / `Jurídica`. Afecta lógica de reportería regulatoria. |
 | 10 | `codproducto` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Maestro de producto en tabla `lkp_equivalencia_core`. |
 | 11 | `desproducto` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Descripción larga del producto. Sin abreviaturas. |
@@ -176,7 +176,7 @@ Esta sección documenta el linaje técnico completo del activo de datos: desde l
 | UDV | `UNIVERSAL/poliza/poliza_movimiento/hd_dac_poliza_mov_vg_emp_vida_core/data` | `hd_dac_poliza_mov_vg_emp_vida_core` | Histórico de movimientos de pólizas VG empleados. Permite filtrar por vigencia y validez. |
 | UDV | `UNIVERSAL/poliza/poliza_vida/ud_pol_cert_mov_vg_emp_vida_core/data` | `ud_pol_cert_mov_vg_emp_vida_core` | Tabla de certificados y movimientos vigentes de póliza. Fuente de validación de vigencia. |
 | UDV | `UNIVERSAL/poliza/poliza_vida/md_dac_pol_cert_vg_emp_vida_core/data` | `md_dac_pol_cert_vg_emp_vida_core` | Detalle de certificados de póliza VG empleados. Fuente de datos de cobertura por asegurado. |
-| UDV | `UNIVERSAL/persona/persona_rol/hd_dac_poliza_cert_per_rol/data` | `hd_dac_poliza_cert_per_rol` | Histórico de personas vinculadas a certificados de póliza por rol. Fuente principal de datos de persona (PK). |
+| UDV | `UNIVERSAL/persona/persona_rol/Tablapol/data` | `Tablapol` | Histórico de personas vinculadas a certificados de póliza por rol. Fuente principal de datos de persona (PK). |
 | UDV | `UNIVERSAL/referencia/catalogo/lkp_equivalencia_core/data` | `lkp_equivalencia_core` | Tabla de equivalencias y homologaciones de catálogos (tipo documento, sistema origen, etc.). |
 
 ### Lógica de Universo y Reglas de Carga por Campo
