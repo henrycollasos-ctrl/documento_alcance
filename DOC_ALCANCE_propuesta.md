@@ -329,22 +329,22 @@ Esta sección consolida la información de gobierno corporativo del activo de da
 | **Data Owner** *(campo enriquecido)* | Ejecutivo o área de negocio con autoridad final sobre el activo: define políticas de uso, aprueba cambios de modelo y es responsable ante la organización y reguladores. | Nombre del ejecutivo o gerencia responsable. El Data Owner es un rol de negocio, no técnico. Debe pertenecer al área propietaria del dominio. | `Gerencia de Vida Grupo` |
 | **SLA de Disponibilidad** *(campo enriquecido)* | Tiempo máximo acordado entre el equipo de ingeniería de datos y los consumidores del activo para que los datos estén disponibles y actualizados tras el cierre del período de carga. | Expresar en formato `HH:MM` (horas:minutos) desde el cierre del corte. Ej: `T+04:00` significa disponible máximo 4 horas después del corte diario. | `T+04:00 (cierre diario)` |
 | **Ciclo de Vida del Dato** *(campo enriquecido)* | Período de retención del activo en la capa de consumo y política de archivado o eliminación. | Indicar período de retención activa y política de archivado. Referenciar la política corporativa de retención de datos si existe. | `Retención activa: 24 meses. Archivado en capa RDV: 5 años. Eliminación: conforme política DGD-POL-001.` |
-| **URL en Data Catalog** *(campo enriquecido)* | Enlace directo al registro del activo en el catálogo de datos corporativo (Unity Catalog, Collibra, Alation, etc.). | URL completa del activo en el catálogo. Actualizar ante cada cambio de nombre o migración de entorno. | `https://catalog.pacifico.com.pe/assets/udv_prod/sch_udv_vw/md_dac_poliza_vig_cliente_rol_vg_emp_core` |
+| **URL en Data Catalog** *(campo enriquecido)* | Enlace directo al registro del activo en el catálogo de datos corporativo (Unity Catalog, Collibra, Alation, etc.). | URL completa del activo en el catálogo. Actualizar ante cada cambio de nombre o migración de entorno. | `https://catalog.pac.com.pe/assets/udv_prod/sch_udv_vw/md_dac_poliza_vig_cliente_rol_vg_emp_core` |
 
 ### Contenido – Información General del Activo
 
 | Campo | Valor |
 |---|---|
-| **Matrícula del Data Steward** | `DS-PAC-0042` *(supuesto – pendiente de confirmación con equipo de GD)* |
-| **Data Owner** | Gerencia de Vida Grupo / Gerencia de Canales Digitales *(cogestión por contexto del activo)* |
-| **Squad Data** | Daft Punk |
-| **PO Squad Data** | Alida Martel |
-| **Custodio de Negocio** | Micaela Bravo |
-| **Custodio Técnico** | Freddy García (`freddy.garcia@inetum.com`) |
+| **Matrícula del Data Steward** | `DS-00007` *(supuesto – pendiente de confirmación con equipo de GD)* |
+| **Data Owner** | XXX|
+| **Squad Data** | X |
+| **PO Squad Data** | X |
+| **Custodio de Negocio** | X |
+| **Custodio Técnico** | X |
 | **Modelador** | Susan Delgado |
-| **Data Governance Expert** | Alexandra Baldeon |
+| **Data Governance Expert** |  |
 | **Frecuencia de Actualización** | Diaria (T+04:00 estimado) |
-| **Entorno de Producción** | `udv_prod.sch_udv_vw.md_dac_poliza_vig_cliente_rol_vg_emp_core` |
+| **Entorno de Producción** | `UDV.XXX.YYY` |
 | **Fecha de Primera Producción** | 2023-01-01 *(referencia serial de fecha: 46022 = 2026-01-01 en Excel epoch)* |
 | **Versión del Diccionario** | v1.5 |
 | **Ciclo de Vida** | Retención activa: 24 meses. Archivado RDV: 5 años. Eliminación: según política DGD-POL-001. |
@@ -358,17 +358,12 @@ Esta sección consolida la información de gobierno corporativo del activo de da
 
 | Versión | Fecha | Responsable | Descripción del Cambio |
 |---|---|---|---|
-| v1.0 | — | Susan Delgado | Creación inicial del diccionario de datos. |
-| v1.5 | 2026-01-01 | Susan Delgado / Alexandra Baldeon | Incorporación de reglas de calidad, clasificación DAC/EDC y campos de control. |
-| v1.6 | 2026-03-19 | Henry [Data Steward E-Commerce] | Enriquecimiento con Documento de Alcance: definiciones de sección, lineage completo, reglas propuestas, clasificación de seguridad extendida e información general. |
+| v1.0 | — | Henry [Data Steward E-Commerce] | Enriquecimiento con Documento de Alcance: definiciones de sección, lineage completo, reglas propuestas, clasificación de seguridad extendida e información general. | Creación inicial del diccionario de datos. |
 
 ---
 
 ## 📌 Notas de Gobierno y Supuestos del Documento
-
-> Este documento fue generado a partir de los insumos proporcionados: `PARA_DOC_ALCANCE.xlsx` (plantilla de alcance) y `Plantilla_Diccionario_de_Datos_UDV_...v1.5.xlsm` (diccionario de datos de la tabla). Los siguientes elementos se marcaron como **supuestos** y deben ser validados antes de la publicación oficial:
-
-1. **Matrícula del Data Steward** (`DS-PAC-0042`): No estaba disponible en el insumo fuente. Debe ser asignada por el Data Governance Expert.
+1. **Matrícula del Data Steward** (`DS00007`): HCV. Debe ser asignada por el Data Governance Expert.
 2. **SLA de Disponibilidad** (`T+04:00`): Inferido del contexto de carga diaria. Debe validarse contra los SLA acordados con los consumidores del activo.
 3. **URL del Data Catalog**: Pendiente de registro en el catálogo corporativo. Debe actualizarse tras el onboarding del activo.
 4. **Subdominio**: Inferido del contexto funcional del activo. Debe ser confirmado por el Data Owner.
@@ -378,4 +373,4 @@ Esta sección consolida la información de gobierno corporativo del activo de da
 
 ---
 
-*Documento preparado bajo el marco de referencia **DAMA-DMBOK v2.0** | Pacífico Seguros – Gobierno de Datos | Capa: UDV Production*
+*Documento preparado bajo el marco de referencia **DAMA-DMBOK v2.0** |Gobierno de Datos | Capa: UDV Production*
