@@ -11,26 +11,26 @@
 
 | Rol | Nombre | Área |
 |-----|--------|------|
-| Squad Data | Daft Punk | Data & Analytics |
-| PO Squad Data | Alida Martel | Data & Analytics |
-| Custodio de Negocio | Micaela Bravo | Negocio / Vida Grupo |
-| Custodio Técnico | Freddy García | Ingeniería de Datos |
-| Modelador | Susan Delgado | Arquitectura de Datos |
-| Data Governance Expert | Alexandra Baldeon | Gobierno de Datos |
+| Squad Data | x | Data & Analytics |
+| PO Squad Data | x | Data & Analytics |
+| Custodio de Negocio | x | Negocio / Vida Grupo |
+| Custodio Técnico | x | Ingeniería de Datos |
+| Modelador | x | Arquitectura de Datos |
+| Data Governance Expert | x | Gobierno de Datos |
 
 ---
 
 ## 1. INFORMACIÓN DE REFERENCIA
 
 ### Descripción de la sección
-Esta sección establece la identidad funcional del activo de datos: su posición dentro del modelo de dominio de negocio de Pacífico Seguros, la fuente de referencia desde la cual se originaron los elementos de dato, y el significado de negocio de cada campo. Es el contrato semántico entre el negocio, la analítica y la tecnología. Garantiza que cada campo tenga un nombre de negocio único, una definición precisa y una trazabilidad hacia su origen.
+Esta sección establece la identidad funcional del activo de datos: su posición dentro del modelo de dominio de negocio, la fuente de referencia desde la cual se originaron los elementos de dato, y el significado de negocio de cada campo. Es el contrato semántico entre el negocio, la analítica y la tecnología. Garantiza que cada campo tenga un nombre de negocio único, una definición precisa y una trazabilidad hacia su origen.
 
 ### Definición de campos
 
 | Campo | Definición | Cómo llenarlo | Ejemplo |
 |---|---|---|---|
 | **Estado de Mapeo** | Indica el estado actual del proceso de mapeo del campo entre fuente y destino. Refleja el avance en el ciclo de gobierno. | Usar valores controlados: `Mapeado`, `Pendiente`, `En Revisión`, `No Aplica`. Actualizar al cierre de cada sprint de ingeniería. | `Mapeado` |
-| **Dominio** | Dominio de negocio al que pertenece el campo según la taxonomía corporativa de dominios de datos de Pacífico Seguros. | Seleccionar del catálogo oficial de dominios. No inventar valores. Consultar al Data Governance Expert si hay duda de clasificación. | `Clientes & Prospectos Persona` |
+| **Dominio** | Dominio de negocio al que pertenece el campo según la taxonomía corporativa de dominios de datos de . | Seleccionar del catálogo oficial de dominios. No inventar valores. Consultar al Data Governance Expert si hay duda de clasificación. | `Clientes & Prospectos Persona` |
 | **Subdominio** | Subclasificación dentro del dominio de negocio para mayor granularidad temática. | Indicar solo si el dominio tiene subdivisión formal aprobada. Si no aplica, dejar en blanco o indicar `No Aplica`. | `Persona Natural – Titular de Póliza` |
 | **Tipo repositorio de Referencia** | Tipo de sistema o repositorio desde el cual se obtiene el valor de referencia del campo (sistema core, catálogo, tabla auxiliar, etc.). | Indicar el tipo de sistema fuente: `Core`, `Catálogo`, `Maestro`, `Temporal`, `No Aplica`. No utilizar nombres de plataforma directamente. | `Core` |
 | **Esquema de Referencia** | Nombre del esquema del sistema fuente que contiene la tabla de referencia del campo. | Usar el nombre técnico exacto del esquema tal como aparece en el sistema de origen. Si no aplica, indicar `No Aplica`. | `sch_udv_vw` |
@@ -45,7 +45,7 @@ Esta sección establece la identidad funcional del activo de datos: su posición
 
 | Campo | Valor |
 |---|---|
-| **Nombre del Activo** | `md_dac_poliza_vig_cliente_rol_vg_emp_core` |
+| **Nombre del Activo** | `  ` |
 | **Nombre de Negocio** | Póliza Vigente – Cliente y Rol – Vida Grupo / Empleados (Core) |
 | **Descripción Funcional** | Tabla que consolida la información de los contratantes y asegurados vinculados a pólizas activas de los productos Vida Ley, Vida Grupo y SCTR Pensiones, incluyendo únicamente movimientos válidos y vigentes según la lógica de negocio definida. Sirve como base para análisis de persistencia, perfilamiento de clientes y reportería regulatoria. |
 | **Dominio de Negocio** | Clientes & Prospectos Persona |
@@ -90,7 +90,7 @@ Esta sección establece la identidad funcional del activo de datos: su posición
 ## 2. INFORMACIÓN MODELO DDV
 
 ### Descripción de la sección
-Esta sección documenta la estructura física y lógica del activo de datos dentro de la capa DDV/UDV del Data Lake corporativo de Pacífico Seguros. Define la ubicación técnica exacta (catálogo, esquema, tabla, campo), la tipología de cada campo, las llaves técnicas de la tabla, y las relaciones con entidades físicas del modelo de datos. Es la referencia canónica para equipos de ingeniería, arquitectura y data catalog.
+Esta sección documenta la estructura física y lógica del activo de datos dentro de la capa DDV/UDV del Data Lake corporativo de . Define la ubicación técnica exacta (catálogo, esquema, tabla, campo), la tipología de cada campo, las llaves técnicas de la tabla, y las relaciones con entidades físicas del modelo de datos. Es la referencia canónica para equipos de ingeniería, arquitectura y data catalog.
 
 ### Definición de campos
 
@@ -98,7 +98,7 @@ Esta sección documenta la estructura física y lógica del activo de datos dent
 |---|---|---|---|
 | **DESCARTADO** | Indicador que señala si el campo fue considerado en una versión previa del modelo pero fue excluido del diseño final por decisión técnica o de negocio. | Valores: `Sí` / `No`. Si es `Sí`, documentar el motivo en Comentarios del Modelo. | `No` |
 | **ESQUEMA DDV** | Nombre técnico del esquema en el catálogo UDV/DDV donde reside la tabla del activo. | Nombre exacto tal como aparece en el catálogo de datos (Unity Catalog / Hive Metastore). Sensible a mayúsculas. | `sch_udv_vw` |
-| **TABLA DDV** | Nombre técnico de la tabla en el esquema DDV donde se almacena el activo de datos. | Nombre completo de la tabla destino, respetando convenciones de naming: `[prefijo]_[dominio]_[entidad]_[contexto]_[capa]`. | `md_dac_poliza_vig_cliente_rol_vg_emp_core` |
+| **TABLA DDV** | Nombre técnico de la tabla en el esquema DDV donde se almacena el activo de datos. | Nombre completo de la tabla destino, respetando convenciones de naming: `[prefijo]_[dominio]_[entidad]_[contexto]_[capa]`. | `  ` |
 | **CAMPO DDV** | Nombre técnico del campo dentro de la tabla DDV/UDV tal como aparece en el esquema físico. | Nombre exacto del campo en minúsculas sin espacios, respetando snake_case según convención corporativa. | `idpersonahomol` |
 | **Tipología** | Categoría técnico-funcional del campo dentro del modelo de datos. Define su rol en la carga y transformación. | Seleccionar de valores controlados: `Tablón`, `Campo Fuente`, `Campo Calculado`, `Campo de Control`, `Campo Derivado`. | `Tablón` |
 | **Entidad Físico Relacionado** | Nombre de la tabla física (no vista) con la que el campo tiene relación de referencia o de la que deriva. | Indicar nombre técnico de la tabla física fuente más directa. Si no aplica, indicar `No Aplica`. | `BCP_UDV_INT_M_DESCANAL` |
@@ -111,7 +111,7 @@ Esta sección documenta la estructura física y lógica del activo de datos dent
 |---|---|
 | **Catálogo** | `udv_prod` |
 | **Esquema DDV** | `sch_udv_vw` |
-| **Tabla DDV** | `md_dac_poliza_vig_cliente_rol_vg_emp_core` |
+| **Tabla DDV** | `  ` |
 | **Capa de Arquitectura** | UDV (Universal Data Vault) – Vista consumible |
 | **Tipo de Objeto** | Vista materializada / Tablón integrado |
 | **Frecuencia de Carga** | Diaria |
@@ -202,14 +202,14 @@ Esta sección documenta el linaje técnico completo del activo de datos: desde l
 ## 4. REGLAS DE CALIDAD
 
 ### Descripción de la sección
-Esta sección define las reglas de calidad de datos aplicadas al activo, organizadas por dimensión de calidad según el estándar DAMA-DMBOK. Cada regla establece el criterio de aceptación, el nivel mínimo de cumplimiento esperado, y su tipo (técnica o de negocio). Las reglas están alineadas con el motor de calidad de datos corporativo de Pacífico Seguros y son el input directo para el Dashboard de Calidad de Datos. La relación entre reglas y campos está explicitada para garantizar trazabilidad entre esta sección y las Definiciones Técnicas.
+Esta sección define las reglas de calidad de datos aplicadas al activo, organizadas por dimensión de calidad según el estándar DAMA-DMBOK. Cada regla establece el criterio de aceptación, el nivel mínimo de cumplimiento esperado, y su tipo (técnica o de negocio). Las reglas están alineadas con el motor de calidad de datos corporativo de  y son el input directo para el Dashboard de Calidad de Datos. La relación entre reglas y campos está explicitada para garantizar trazabilidad entre esta sección y las Definiciones Técnicas.
 
 ### Definición de campos
 
 | Campo | Definición | Cómo llenarlo | Ejemplo |
 |---|---|---|---|
 | **Tipo de Regla Pre-Carga** | Categoría de la regla según su naturaleza: técnica (aplica sobre la estructura/formato del dato) o de negocio (aplica sobre el significado o lógica funcional del dato). | Valores: `Técnica` / `Negocio`. Las reglas técnicas son agnósticas al dominio; las de negocio requieren validación del Custodio de Negocio. | `Negocio` |
-| **Detalle de Regla Pre-Carga** | Descripción formal de la regla de calidad, expresada en términos operacionalizables. Incluye: campo afectado, tabla, criterio de evaluación y valores de referencia. | Usar plantilla: *"El campo [campo] de la tabla [tabla] debe [criterio] [valor]"*. Para reglas con filtro: *"Si [condición], entonces [campo] debe [criterio]"*. | `El campo idpersonahomol de la tabla md_dac_poliza_vig_cliente_rol_vg_emp_core debe ser diferente a nulos y vacíos.` |
+| **Detalle de Regla Pre-Carga** | Descripción formal de la regla de calidad, expresada en términos operacionalizables. Incluye: campo afectado, tabla, criterio de evaluación y valores de referencia. | Usar plantilla: *"El campo [campo] de la tabla [tabla] debe [criterio] [valor]"*. Para reglas con filtro: *"Si [condición], entonces [campo] debe [criterio]"*. | `El campo idpersonahomol de la tabla    debe ser diferente a nulos y vacíos.` |
 | **Dimensión de Calidad** | Dimensión de calidad de datos según DAMA-DMBOK que cubre la regla. | Seleccionar de: `Completitud`, `Validez`, `Unicidad`, `Consistencia`, `Exactitud`, `Disponibilidad`, `Vigencia`, `Razonabilidad`. | `Completitud` |
 | **Mínimo de Calidad (%)** | Umbral mínimo de cumplimiento de la regla expresado en porcentaje. Por debajo de este valor, se considera que el activo no cumple el SLA de calidad. | Valor numérico entre 0 y 100. Los campos DAC deben tener mínimo 100%. Los campos de control pueden tener umbrales diferenciados. | `100` |
 
@@ -217,12 +217,12 @@ Esta sección define las reglas de calidad de datos aplicadas al activo, organiz
 
 | N° | Término de Negocio | Campo Técnico | Tipo de Regla | Dimensión | Criterio | Valor Criterio 1 | Valor Criterio 2 | Regla Completa | Mínimo Calidad (%) | Código Regla |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 1 | ID DE PERSONA HOMOLOGADO | `idpersonahomol` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `idpersonahomol` de la tabla `md_dac_poliza_vig_cliente_rol_vg_emp_core` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
-| 2 | ID DE PERSONA | `idpersona` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `idpersona` de la tabla `md_dac_poliza_vig_cliente_rol_vg_emp_core` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
-| 3 | NÚMERO DE DOCUMENTO HOMOLOGADO | `numdochomol` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `numdochomol` de la tabla `md_dac_poliza_vig_cliente_rol_vg_emp_core` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
-| 4 | NÚMERO DE DOCUMENTO HOMOLOGADO | `numdochomol` | Negocio | Validez | Longitud | `14` | — | El campo `numdochomol` de la tabla `md_dac_poliza_vig_cliente_rol_vg_emp_core` debe tener longitud exacta de 14 caracteres. | 100 | `TR000000009` |
-| 5 | NÚMERO DE DOCUMENTO | `numdoc` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `numdoc` de la tabla `md_dac_poliza_vig_cliente_rol_vg_emp_core` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
-| 6 | NÚMERO DE PÓLIZA | `numpoliza` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `numpoliza` de la tabla `md_dac_poliza_vig_cliente_rol_vg_emp_core` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
+| 1 | ID DE PERSONA HOMOLOGADO | `idpersonahomol` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `idpersonahomol` de la tabla `  ` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
+| 2 | ID DE PERSONA | `idpersona` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `idpersona` de la tabla `  ` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
+| 3 | NÚMERO DE DOCUMENTO HOMOLOGADO | `numdochomol` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `numdochomol` de la tabla `  ` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
+| 4 | NÚMERO DE DOCUMENTO HOMOLOGADO | `numdochomol` | Negocio | Validez | Longitud | `14` | — | El campo `numdochomol` de la tabla `  ` debe tener longitud exacta de 14 caracteres. | 100 | `TR000000009` |
+| 5 | NÚMERO DE DOCUMENTO | `numdoc` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `numdoc` de la tabla `  ` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
+| 6 | NÚMERO DE PÓLIZA | `numpoliza` | Técnica | Completitud | Diferente a | `nulos` | `vacíos` | El campo `numpoliza` de la tabla `  ` debe ser diferente a nulos y vacíos. | 100 | `TR000000001` |
 
 ### Reglas Recomendadas (Gap Identificado)
 
@@ -253,13 +253,13 @@ Esta sección define las reglas de calidad de datos aplicadas al activo, organiz
 ## 5. SEGURIDAD DEL DATO
 
 ### Descripción de la sección
-Esta sección establece el modelo de seguridad y clasificación del activo de datos conforme a los marcos de Data Security del estándar DAMA-DMBOK y la política de clasificación de información de Pacífico Seguros. Define qué campos son Datos de Alta Criticidad (DAC), su clasificación de confidencialidad, el nivel de criticidad para el negocio, los requisitos regulatorios asociados y la frecuencia de actualización. Es el insumo principal para equipos de Ciberseguridad, Cumplimiento, Legal y para la configuración de políticas de acceso (RBAC/ABAC) en el Data Lake.
+Esta sección establece el modelo de seguridad y clasificación del activo de datos conforme a los marcos de Data Security del estándar DAMA-DMBOK y la política de clasificación de información de . Define qué campos son Datos de Alta Criticidad (DAC), su clasificación de confidencialidad, el nivel de criticidad para el negocio, los requisitos regulatorios asociados y la frecuencia de actualización. Es el insumo principal para equipos de Ciberseguridad, Cumplimiento, Legal y para la configuración de políticas de acceso (RBAC/ABAC) en el Data Lake.
 
 ### Definición de campos
 
 | Campo | Definición | Cómo llenarlo | Ejemplo |
 |---|---|---|---|
-| **Es Campo DAC** | Indica si el campo ha sido clasificado como Dato de Alta Criticidad (DAC) según los criterios corporativos de gobierno de datos de Pacífico Seguros. Los campos DAC requieren controles de acceso reforzados y monitoreo de uso. | Valores: `DAC` / `No DAC`. La clasificación DAC debe ser validada y aprobada por el Custodio de Negocio y el Data Governance Expert. | `DAC` |
+| **Es Campo DAC** | Indica si el campo ha sido clasificado como Dato de Alta Criticidad (DAC) según los criterios corporativos de gobierno de datos de . Los campos DAC requieren controles de acceso reforzados y monitoreo de uso. | Valores: `DAC` / `No DAC`. La clasificación DAC debe ser validada y aprobada por el Custodio de Negocio y el Data Governance Expert. | `DAC` |
 | **Concepto DAC** | Descripción del concepto de negocio que justifica la clasificación DAC del campo. Explica qué hace al dato sensible o crítico desde la perspectiva del negocio o la regulación. | Texto breve y preciso. Indicar si la criticidad es por sensibilidad personal (PII), impacto regulatorio, estrategia de negocio o combinación de factores. | `Identificador único de persona. Dato personal sensible sujeto a regulación de protección de datos (Ley 29733).` |
 | **Criticidad del Dato** | Nivel de criticidad del campo según su impacto en el negocio, la regulación y las operaciones de la empresa. | Seleccionar de: `Alta`, `Media`, `Baja`. Los campos DAC deben tener criticidad `Alta`. Los campos de control suelen ser `Baja`. | `Alta` |
 | **Sustento de Criticidad** | Justificación detallada de por qué el campo tiene el nivel de criticidad asignado. Incluye impactos en caso de pérdida, exposición no autorizada o degradación de calidad. | Describir el impacto potencial en términos de: (1) impacto regulatorio, (2) impacto de negocio, (3) impacto reputacional. Mínimo uno de los tres ejes. | `Afecta estrategia de negocio. Exposición no autorizada viola Ley 29733. Pérdida de integridad impacta reportería SBS.` |
@@ -329,7 +329,7 @@ Esta sección consolida la información de gobierno corporativo del activo de da
 | **Data Owner** *(campo enriquecido)* | Ejecutivo o área de negocio con autoridad final sobre el activo: define políticas de uso, aprueba cambios de modelo y es responsable ante la organización y reguladores. | Nombre del ejecutivo o gerencia responsable. El Data Owner es un rol de negocio, no técnico. Debe pertenecer al área propietaria del dominio. | `Gerencia de Vida Grupo` |
 | **SLA de Disponibilidad** *(campo enriquecido)* | Tiempo máximo acordado entre el equipo de ingeniería de datos y los consumidores del activo para que los datos estén disponibles y actualizados tras el cierre del período de carga. | Expresar en formato `HH:MM` (horas:minutos) desde el cierre del corte. Ej: `T+04:00` significa disponible máximo 4 horas después del corte diario. | `T+04:00 (cierre diario)` |
 | **Ciclo de Vida del Dato** *(campo enriquecido)* | Período de retención del activo en la capa de consumo y política de archivado o eliminación. | Indicar período de retención activa y política de archivado. Referenciar la política corporativa de retención de datos si existe. | `Retención activa: 24 meses. Archivado en capa RDV: 5 años. Eliminación: conforme política DGD-POL-001.` |
-| **URL en Data Catalog** *(campo enriquecido)* | Enlace directo al registro del activo en el catálogo de datos corporativo (Unity Catalog, Collibra, Alation, etc.). | URL completa del activo en el catálogo. Actualizar ante cada cambio de nombre o migración de entorno. | `https://catalog.pac.com.pe/assets/udv_prod/sch_udv_vw/md_dac_poliza_vig_cliente_rol_vg_emp_core` |
+| **URL en Data Catalog** *(campo enriquecido)* | Enlace directo al registro del activo en el catálogo de datos corporativo (Unity Catalog, Collibra, Alation, etc.). | URL completa del activo en el catálogo. Actualizar ante cada cambio de nombre o migración de entorno. | `https://catalog.pac.com.pe/assets/udv_prod/sch_udv_vw/  ` |
 
 ### Contenido – Información General del Activo
 
