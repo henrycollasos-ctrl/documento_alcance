@@ -1,8 +1,8 @@
-# 📄 Documento de Alcance`
+    # 📄 Documento de Alcance`
 
 > **Activo de Datos:** 
 > **Catálogo:** `udv_prod` | **Esquema:** `sch_udv_vw`  
-> **Versión:** 1.5 | **Estado:** Activo  
+> **Versión:** 0 | **Estado:** Activo  
 > **Última actualización:** 2026-01-01 | **Clasificación:** Interno – Uso Restringido
 
 ---
@@ -173,8 +173,8 @@ Esta sección documenta el linaje técnico completo del activo de datos: desde l
 | Capa | Ruta ADLS / Esquema Catálogo | Tabla / Archivo Fuente | Descripción del Contenido |
 |---|---|---|---|
 | UDV | `UNIVERSAL/poliza/poliza_vida/tablepoli/data` | `tablepoli` | Tabla maestra de pólizas activas de Vida Grupo empleados. Fuente principal de datos de contrato. |
-| UDV | `UNIVERSAL/poliza/poliza_movimiento/hd_dac_poliza_mov_vg_emp_vida_core/data` | `hd_dac_poliza_mov_vg_emp_vida_core` | Histórico de movimientos de pólizas VG empleados. Permite filtrar por vigencia y validez. |
-| UDV | `UNIVERSAL/poliza/poliza_vida/ud_pol_cert_mov_vg_emp_vida_core/data` | `ud_pol_cert_mov_vg_emp_vida_core` | Tabla de certificados y movimientos vigentes de póliza. Fuente de validación de vigencia. |
+| UDV | `UNIVERSAL/poliza/poliza_movimiento/hd_poli/data` | `hd_poli` | Histórico de movimientos de pólizas VG empleados. Permite filtrar por vigencia y validez. |
+| UDV | `UNIVERSAL/poliza/poliza_vida/ud_pol` | `ud_pol_cert_mov_vg_emp_vida_core` | Tabla de certificados y movimientos vigentes de póliza. Fuente de validación de vigencia. |
 | UDV | `UNIVERSAL/poliza/poliza_vida/md_dac_pol_cert_vg_emp_vida_core/data` | `md_dac_pol_cert_vg_emp_vida_core` | Detalle de certificados de póliza VG empleados. Fuente de datos de cobertura por asegurado. |
 | UDV | `UNIVERSAL/persona/persona_rol/Tablapol/data` | `Tablapol` | Histórico de personas vinculadas a certificados de póliza por rol. Fuente principal de datos de persona (PK). |
 | UDV | `UNIVERSAL/referencia/catalogo/lkp_equivalencia_core/data` | `lkp_equivalencia_core` | Tabla de equivalencias y homologaciones de catálogos (tipo documento, sistema origen, etc.). |
@@ -341,7 +341,7 @@ Esta sección consolida la información de gobierno corporativo del activo de da
 | **PO Squad Data** | X |
 | **Custodio de Negocio** | X |
 | **Custodio Técnico** | X |
-| **Modelador** | Susan Delgado |
+| **Modelador** | x |
 | **Data Governance Expert** |  |
 | **Frecuencia de Actualización** | Diaria (T+04:00 estimado) |
 | **Entorno de Producción** | `UDV.XXX.YYY` |
