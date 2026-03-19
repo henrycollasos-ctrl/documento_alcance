@@ -1,4 +1,4 @@
-# 📄 Documento de Alcance – `md_dac_poliza_vig_cliente_rol_vg_emp_core`
+# 📄 Documento de Alcance`
 
 > **Activo de Datos:** Póliza Vigente – Cliente Rol – Vida Grupo / Empleados (Core)  
 > **Catálogo:** `udv_prod` | **Esquema:** `sch_udv_vw`  
