@@ -34,7 +34,7 @@ Esta sección establece la identidad funcional del activo de datos: su posición
 | **Subdominio** | Subclasificación dentro del dominio de negocio para mayor granularidad temática. | Indicar solo si el dominio tiene subdivisión formal aprobada. Si no aplica, dejar en blanco o indicar `No Aplica`. | `Persona Natural – Titular de Póliza` |
 | **Tipo repositorio de Referencia** | Tipo de sistema o repositorio desde el cual se obtiene el valor de referencia del campo (sistema core, catálogo, tabla auxiliar, etc.). | Indicar el tipo de sistema fuente: `Core`, `Catálogo`, `Maestro`, `Temporal`, `No Aplica`. No utilizar nombres de plataforma directamente. | `Core` |
 | **Esquema de Referencia** | Nombre del esquema del sistema fuente que contiene la tabla de referencia del campo. | Usar el nombre técnico exacto del esquema tal como aparece en el sistema de origen. Si no aplica, indicar `No Aplica`. | `sch_udv_vw` |
-| **Tabla de Referencia** | Nombre de la tabla fuente de donde proviene el dato, en el esquema de referencia indicado. | Nombre técnico exacto de la tabla fuente. Debe ser coherente con el lineage documentado en Definiciones Técnicas. | `md_dac_poliza_vg_emp_vida_core` |
+| **Tabla de Referencia** | Nombre de la tabla fuente de donde proviene el dato, en el esquema de referencia indicado. | Nombre técnico exacto de la tabla fuente. Debe ser coherente con el lineage documentado en Definiciones Técnicas. | `tablepoli` |
 | **Campos de Referencia** | Nombre exacto del campo en la tabla de referencia que da origen al dato en la tabla destino. | Nombre técnico del campo fuente, respetando mayúsculas/minúsculas según el sistema. Si deriva de múltiples campos, listarlos separados por coma. | `idpersonahomol` |
 | **Nombre Elemento de Dato** | Nombre de negocio estandarizado del campo, expresado en lenguaje de negocio claro y sin ambigüedad técnica. Forma parte del Glosario Corporativo. | Usar nomenclatura en mayúsculas, descriptiva y única. Registrar en el Glosario de Negocio. Nunca usar abreviaturas opacas. | `ID DE PERSONA HOMOLOGADO` |
 | **Definición del Campo** | Descripción precisa del significado de negocio del campo: qué representa, cómo se calcula o genera, y cuándo es relevante. | Redactar en lenguaje de negocio. Incluir: qué es, cómo se forma, rangos esperados o valores posibles, y relación con otros campos si aplica. Mínimo 2 oraciones. | `Identificador único autogenerado homologado. Hash de la concatenación del tipo de documento con el número de documento de la persona.` |
@@ -53,7 +53,7 @@ Esta sección establece la identidad funcional del activo de datos: su posición
 | **Estado de Mapeo General** | Mapeado |
 | **Tipo Repositorio de Referencia** | Core (Sistema Transaccional Vida Grupo) |
 | **Esquema de Referencia Primario** | `sch_udv_vw` |
-| **Tabla de Referencia Primaria** | `md_dac_poliza_vg_emp_vida_core` |
+| **Tabla de Referencia Primaria** | `tablepoli` |
 | **Llave de Negocio Principal** | `idpersonahomol` (Hash tipo+número de documento homologado) |
 
 ### Inventario de Campos – Elementos de Dato
@@ -131,16 +131,16 @@ Esta sección documenta la estructura física y lógica del activo de datos dent
 | 6 | `numdoc` | Campo Fuente | `Tablapol` | No | No | Número de documento original sin padding. Usado para validación cruzada con numdochomol. |
 | 7 | `codrol` | Campo Fuente | `Tablapol` | No | No | Códigos válidos: `A` (Asegurado), `C` (Contratante). Cardinalidad controlada. |
 | 8 | `desrol` | Campo Fuente | `Tablapol` | No | No | Derivado de codrol. No tiene regla de calidad independiente. |
-| 9 | `tipopersona` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Clasificación: `Natural` / `Jurídica`. Afecta lógica de reportería regulatoria. |
-| 10 | `codproducto` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Maestro de producto en tabla `lkp_equivalencia_core`. |
-| 11 | `desproducto` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Descripción larga del producto. Sin abreviaturas. |
-| 12 | `numpoliza` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Identificador del contrato. Permite trazabilidad hacia renovaciones. Campo EDC. |
-| 13 | `codcanal` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Código de canal de distribución. |
-| 14 | `descanal` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Descripción del canal. Referenciada en reportes comerciales. |
-| 15 | `codlineanegocio` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Categorización de línea de negocio para segmentación y reporting. |
-| 16 | `deslineanegocio` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Descripción de línea de negocio. |
-| 17 | `desgrupocomercial` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Agrupación comercial de nivel estratégico. |
-| 18 | `codsistemaorigen` | Campo Fuente | `md_dac_poliza_vg_emp_vida_core` | No | No | Código del sistema core transaccional de origen (`GW`, `AX`). |
+| 9 | `tipopersona` | Campo Fuente | `tablepoli` | No | No | Clasificación: `Natural` / `Jurídica`. Afecta lógica de reportería regulatoria. |
+| 10 | `codproducto` | Campo Fuente | `tablepoli` | No | No | Maestro de producto en tabla `lkp_equivalencia_core`. |
+| 11 | `desproducto` | Campo Fuente | `tablepoli` | No | No | Descripción larga del producto. Sin abreviaturas. |
+| 12 | `numpoliza` | Campo Fuente | `tablepoli` | No | No | Identificador del contrato. Permite trazabilidad hacia renovaciones. Campo EDC. |
+| 13 | `codcanal` | Campo Fuente | `tablepoli` | No | No | Código de canal de distribución. |
+| 14 | `descanal` | Campo Fuente | `tablepoli` | No | No | Descripción del canal. Referenciada en reportes comerciales. |
+| 15 | `codlineanegocio` | Campo Fuente | `tablepoli` | No | No | Categorización de línea de negocio para segmentación y reporting. |
+| 16 | `deslineanegocio` | Campo Fuente | `tablepoli` | No | No | Descripción de línea de negocio. |
+| 17 | `desgrupocomercial` | Campo Fuente | `tablepoli` | No | No | Agrupación comercial de nivel estratégico. |
+| 18 | `codsistemaorigen` | Campo Fuente | `tablepoli` | No | No | Código del sistema core transaccional de origen (`GW`, `AX`). |
 | 19 | `periodo` | Campo de Control | *(interno pipeline)* | No | No | Período de negocio en formato `YYYYMM`. Campo de partición lógica. |
 | 20 | `periododia` | Campo de Control | *(interno pipeline)* | No | No | Período de carga diaria en formato `YYYYMMDD`. Campo de partición física. |
 | 21 | `feccargainfo` | Campo de Control | *(interno pipeline)* | No | No | Timestamp de carga al Data Lake. Para auditoría y linaje temporal. |
@@ -160,8 +160,8 @@ Esta sección documenta el linaje técnico completo del activo de datos: desde l
 | Campo | Definición | Cómo llenarlo | Ejemplo |
 |---|---|---|---|
 | **Solución Transitoria** | Indica si el campo utiliza actualmente una solución temporal de carga o transformación, pendiente de ser reemplazada por la solución definitiva. | Valores: `Sí` / `No`. Si es `Sí`, documentar en Comentarios Técnicos el ticket de deuda técnica y la fecha estimada de resolución. | `No` |
-| **Esquema / Ruta Fuente** | Esquema del sistema fuente (en UDV, RDV, DDV o APP) o ruta del contenedor ADLS desde donde se extrae el dato. | Nombre técnico exacto del esquema o la ruta del contenedor ADLS. Formato: `UNIVERSAL/[dominio]/[entidad]/[tabla]/data` para RDV. | `UNIVERSAL/poliza/poliza_vida/md_dac_poliza_vg_emp_vida_core/data` |
-| **Tabla Fuente UDV, RDV, DDV/APP** | Nombre de la tabla o archivo fuente desde la cual se carga el campo en la tabla destino. | Nombre técnico de la tabla tal como aparece en el catálogo fuente. Incluir la capa de origen (UDV/RDV/DDV/APP). | `md_dac_poliza_vg_emp_vida_core` |
+| **Esquema / Ruta Fuente** | Esquema del sistema fuente (en UDV, RDV, DDV o APP) o ruta del contenedor ADLS desde donde se extrae el dato. | Nombre técnico exacto del esquema o la ruta del contenedor ADLS. Formato: `UNIVERSAL/[dominio]/[entidad]/[tabla]/data` para RDV. | `UNIVERSAL/poliza/poliza_vida/tablepoli/data` |
+| **Tabla Fuente UDV, RDV, DDV/APP** | Nombre de la tabla o archivo fuente desde la cual se carga el campo en la tabla destino. | Nombre técnico de la tabla tal como aparece en el catálogo fuente. Incluir la capa de origen (UDV/RDV/DDV/APP). | `tablepoli` |
 | **Campo Fuente UDV, RDV, DDV/APP** | Nombre del campo en la tabla fuente del que se extrae el valor del campo destino. | Nombre técnico exacto del campo fuente. Si deriva de múltiples campos, documentar todos en la lógica. | `idpersonahomol` |
 | **Lógica de Definición del Universo** | Define el universo poblacional o el criterio de filtrado aplicado para incluir un registro en la tabla destino. | Describir la condición SQL o lógica de negocio que determina qué registros califican para ser incluidos. Usar pseudocódigo o SQL simplificado. | `WHERE estado_poliza = 'VIGENTE' AND flg_movimiento_valido = 1` |
 | **Regla de Carga** | Describe la transformación, enriquecimiento o lógica de cálculo aplicada al campo durante el proceso de ETL/ELT. | Documentar con pseudocódigo, expresión SQL o descripción textual precisa. Incluir condiciones, joins y fuentes utilizadas. | `HASH(CONCAT(tipodochomol, numdochomol))` |
@@ -172,7 +172,7 @@ Esta sección documenta el linaje técnico completo del activo de datos: desde l
 
 | Capa | Ruta ADLS / Esquema Catálogo | Tabla / Archivo Fuente | Descripción del Contenido |
 |---|---|---|---|
-| UDV | `UNIVERSAL/poliza/poliza_vida/md_dac_poliza_vg_emp_vida_core/data` | `md_dac_poliza_vg_emp_vida_core` | Tabla maestra de pólizas activas de Vida Grupo empleados. Fuente principal de datos de contrato. |
+| UDV | `UNIVERSAL/poliza/poliza_vida/tablepoli/data` | `tablepoli` | Tabla maestra de pólizas activas de Vida Grupo empleados. Fuente principal de datos de contrato. |
 | UDV | `UNIVERSAL/poliza/poliza_movimiento/hd_dac_poliza_mov_vg_emp_vida_core/data` | `hd_dac_poliza_mov_vg_emp_vida_core` | Histórico de movimientos de pólizas VG empleados. Permite filtrar por vigencia y validez. |
 | UDV | `UNIVERSAL/poliza/poliza_vida/ud_pol_cert_mov_vg_emp_vida_core/data` | `ud_pol_cert_mov_vg_emp_vida_core` | Tabla de certificados y movimientos vigentes de póliza. Fuente de validación de vigencia. |
 | UDV | `UNIVERSAL/poliza/poliza_vida/md_dac_pol_cert_vg_emp_vida_core/data` | `md_dac_pol_cert_vg_emp_vida_core` | Detalle de certificados de póliza VG empleados. Fuente de datos de cobertura por asegurado. |
