@@ -1,6 +1,6 @@
 # 📄 Documento de Alcance`
 
-> **Activo de Datos:** Póliza Vigente – Cliente Rol – Vida Grupo / Empleados (Core)  
+> **Activo de Datos:** 
 > **Catálogo:** `udv_prod` | **Esquema:** `sch_udv_vw`  
 > **Versión:** 1.5 | **Estado:** Activo  
 > **Última actualización:** 2026-01-01 | **Clasificación:** Interno – Uso Restringido
